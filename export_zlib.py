@@ -85,7 +85,6 @@ _args_defaults = parser.parse_args([])
 
 _app_config_dir = "/tmp/PyZlibExtractor/"
 _arguments_preset_json_file = os.path.join(_app_config_dir, ".preset.json")
-# _arguments_preset_json_file = os.path.join(os.path.dirname(__file__), ".preset.json")
 _archive_format = "zlib"
 _uncompress_cmd = "zlib-flate -uncompress"
 _processing_dir = _args.path if _args.path[-1] == "/" else _args.path + "/"
@@ -205,7 +204,7 @@ def uncompress_single_archive(archive_name, output_file):
 
 
 def delete_single_archive(archive_name):
-    archive_path = f"{_processing_dir}{archive_name}.{_archive_format}"
+    archive_path = f"{_processing_dir}{archive_name}"
     output = os.remove(archive_path)
     logging.info(f"Removed archive = {archive_path} with output status = {output}\n")
 
