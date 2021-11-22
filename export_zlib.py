@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Michal Loska 08.11.2021
+# Michal Loska 22.11.2021
 import argparse
 import os.path
 from datetime import datetime
@@ -138,7 +138,14 @@ def validate_input_arguments(input_arguments):
                 f"This script does not support '{output_file_format}' output file format! Quitting!"
             )
             exit()
+
+        global _output_compression_file_name
+        global _output_log_format
+        global _output_compression_file_path
+        
+        _output_compression_file_name = output_name_split[0]
         _output_log_format = _supported_log_formats[output_file_format]
+        _output_compression_file_path = _processing_dir + _output_compression_file_name + _output_log_format
         logging.debug(
             f"Overriding output log file format to: {_output_log_format} based on the '--output_name' param"
         )
